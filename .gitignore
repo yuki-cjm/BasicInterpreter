@@ -1,0 +1,10 @@
+build/
+**/*.o
+.vscode/
+.cache/
+.DS_Store
+test/
+*:Zone.Identifier
+README.md
+docs/
+.idea/
