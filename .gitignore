@@ -8,3 +8,7 @@ test/
 README.md
 docs/
 .idea/
+*.exe
+*.out
+*.bin
+
