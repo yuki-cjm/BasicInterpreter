@@ -17,9 +17,12 @@ void Program::removeStmt(int line){
 
 void Program::run(){
     programCounter_ = 0;
+    programEnd_ = false;
     programCounter_ = recorder_.nextLines(programCounter_);
     while(programCounter_ != -1){
         execute(recorder_[programCounter_]->second);
+        if(programCounter_)
+            break;
         programCounter_ = recorder_.nextLines(programCounter_);
     }
 }
@@ -46,5 +49,9 @@ void Program::changePC(int line){
 }
 
 void Program::programEnd(){
-    exit(0);
+    programEnd_ = true;
+}
+
+void Program::resetAfterRun() noexcept{
+    return ;
 }
