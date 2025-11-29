@@ -20,6 +20,12 @@ int main() {
     }
     try {
       // TODO: The main function.
+        TokenStream tokenstream = lexer.tokenize(line);
+        ParsedLine parsedline = parser.parseline(tokenstream, line);
+        if(parsedline.getline())
+            program.addStmt(parsedline.getline(), parsedline.getStatement());
+        else
+            parsedline.getStatement()->execute();
     } catch (const BasicError& e) {
       std::cout << e.message() << "\n";
     }
