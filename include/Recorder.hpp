@@ -12,7 +12,7 @@ class Recorder {
 
   void add(int line, Statement* stmt);
   void remove(int line);
-  const Statement* get(int line) const noexcept;
+  Statement* get(int line) noexcept;
   bool hasLine(int line) const noexcept;
   void clear() noexcept;
   void printLines() const;

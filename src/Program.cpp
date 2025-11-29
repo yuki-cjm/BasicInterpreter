@@ -18,12 +18,12 @@ void Program::removeStmt(int line){
 void Program::run(){
     programCounter_ = 0;
     programEnd_ = false;
-    programCounter_ = recorder_.nextLines(programCounter_);
+    programCounter_ = recorder_.nextLine(programCounter_);
     while(programCounter_ != -1){
-        execute(recorder_[programCounter_]->second);
+        execute(recorder_.get(programCounter_));
         if(programEnd_)
             break;
-        programCounter_ = recorder_.nextLines(programCounter_);
+        programCounter_ = recorder_.nextLine(programCounter_);
     }
 }
 
