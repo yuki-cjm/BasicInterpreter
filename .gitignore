@@ -11,4 +11,6 @@ docs/
 *.exe
 *.out
 *.bin
-
+CMakeFiles/
+*.cmake
+CMakeCache.txt
