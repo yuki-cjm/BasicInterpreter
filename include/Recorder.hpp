@@ -8,7 +8,7 @@
 
 class Recorder {
  public:
-  ~Recorder();
+  ~Recorder() = default;
 
   void add(int line, Statement* stmt);
   void remove(int line);
