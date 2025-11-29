@@ -1,5 +1,6 @@
 #include "Parser.hpp"
 
+#include <iostream>
 #include <sstream>
 #include <stdexcept>
 #include <string>
@@ -46,7 +47,6 @@ ParsedLine Parser::parseLine(TokenStream& tokens,
 
   // 解析语句
   result.setStatement(parseStatement(tokens, originLine));
-
   return result;
 }
 
@@ -55,12 +55,10 @@ Statement* Parser::parseStatement(TokenStream& tokens,
   if (tokens.empty()) {
     throw BasicError("SYNTAX ERROR");
   }
-
   const Token* token = tokens.get();
   if (!token) {
     throw BasicError("SYNTAX ERROR");
   }
-
   switch (token->type) {
     case TokenType::LET:
       return parseLet(tokens, originLine);

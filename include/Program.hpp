@@ -17,6 +17,7 @@ class Program {
   void run();
   void list() const;
   void clear();
+  void help();
 
   void execute(Statement* stmt);
 
