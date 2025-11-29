@@ -21,7 +21,7 @@ void Program::run(){
     programCounter_ = recorder_.nextLines(programCounter_);
     while(programCounter_ != -1){
         execute(recorder_[programCounter_]->second);
-        if(programCounter_)
+        if(programEnd_)
             break;
         programCounter_ = recorder_.nextLines(programCounter_);
     }
