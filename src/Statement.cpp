@@ -15,31 +15,31 @@ const std::string& Statement::text() const noexcept { return source_; }
 
 // TODO: Imply interfaces declared in the Statement.hpp.
 
-void RemStatement::execute(VarState &state, Program& program) const override{}
+void RemStatement::execute(VarState &state, Program& program) const{}
 
-void LetStatement::execute(VarState &state, Program& program) const override{
-    state.setvalue(variable_name, value);
+void LetStatement::execute(VarState &state, Program& program) const{
+    state.setValue(variable_name, value);
 }
 
-void PrintStatement::execute(VarState &state, Program& program) const override{
+void PrintStatement::execute(VarState &state, Program& program) const{
     std::cout << result << '\n';
 }
 
-void InputStatement::execute(VarState &state, Program& program) const override{
+void InputStatement::execute(VarState &state, Program& program) const{
     int value;
     std::cin >> value;
-    state.setvalue(variable_name, value);
+    state.setValue(variable_name, value);
 }
 
-void EndStatement::execute(VarState &state, Program& program) const override{
+void EndStatement::execute(VarState &state, Program& program) const{
     program.programEnd();
 }
 
-void GotoStatement::execute(VarState &state, Program& program) const override{
+void GotoStatement::execute(VarState &state, Program& program) const{
     program.changePC(Linenumber);
 }
 
-void IfStatement::execute(VarState &state, Program& program) const override{
+void IfStatement::execute(VarState &state, Program& program) const{
     switch(op)
     {
         case '<': if(leftvalue < rightvalue) program.changePC(Linenumber); break;
@@ -48,23 +48,23 @@ void IfStatement::execute(VarState &state, Program& program) const override{
     }
 }
 
-void Runstatement::execute(VarState &state, Program& program) const override{
+void RunStatement::execute(VarState &state, Program& program) const{
     program.run();
 }
 
-void ListStatement::execute(VarState &state, Program& program) const override{
+void ListStatement::execute(VarState &state, Program& program) const{
     program.list();
 }
 
-void ClearStatement::execute(VarState &state, Program& program) const override{
+void ClearStatement::execute(VarState &state, Program& program) const{
     program.clear();
 }
 
-void QuitStatement::execute(VarState &state, Program& program) const override{
+void QuitStatement::execute(VarState &state, Program& program) const{
     exit(0);
 }
 
-void HelpStatement::execute(VarState &state, Program& program) const override{
+void HelpStatement::execute(VarState &state, Program& program) const{
     std::cout << "支持的命令:\n"
               << "  RUN - 开始执行程序\n"
               << "  LIST - 列出当前所有的程序行\n"
