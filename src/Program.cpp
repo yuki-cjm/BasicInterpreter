@@ -52,6 +52,10 @@ void Program::programEnd(){
     programEnd_ = true;
 }
 
+VarState* Program::get_vars(){
+    return &vars_;
+}
+
 void Program::resetAfterRun() noexcept{
     return ;
 }

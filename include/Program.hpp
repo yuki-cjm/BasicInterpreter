@@ -24,6 +24,8 @@ class Program {
   void changePC(int line);
   void programEnd();
 
+  VarState* get_vars();
+
  private:
   Recorder recorder_;
   VarState vars_;

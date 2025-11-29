@@ -101,7 +101,7 @@ Statement* Parser::parseLet(TokenStream& tokens,
   auto expr = parseExpression(tokens);
 
   // TODO: create a corresponding stmt and return it.
-    LetStatement *stmt = new LetStatement(originLine, varName, expr->evaluate);
+    LetStatement *stmt = new LetStatement(originLine, varName, expr->evaluate(vars_));
     return stmt;
 }
 
@@ -109,7 +109,7 @@ Statement* Parser::parsePrint(TokenStream& tokens,
                               const std::string& originLine) const {
   auto expr = parseExpression(tokens);
   // TODO: create a corresponding stmt and return it.
-    PrintStatement *stmt = new PrintStatement(originLine, expr->evaluate);
+    PrintStatement *stmt = new PrintStatement(originLine, expr->evaluate(vars_));
     return stmt;
 }
 
@@ -194,7 +194,7 @@ Statement* Parser::parseIf(TokenStream& tokens,
   int targetLine = parseLiteral(lineToken);
 
   // TODO: create a corresponding stmt and return it.
-    IfStatement *stmt = new IfStatement(originLine, leftExpr->evaluate, op, rightExpr->evaluate, targetLine);
+    IfStatement *stmt = new IfStatement(originLine, leftExpr->evaluate(vars_), op, rightExpr->evaluate(vars_), targetLine);
     return stmt;
 }
 

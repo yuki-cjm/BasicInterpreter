@@ -5,13 +5,13 @@
 
 ConstExpression::ConstExpression(int value) : value_(value) {}
 
-int ConstExpression::evaluate(const VarState&) const { return value_; }
+int ConstExpression::evaluate(const VarState*) const { return value_; }
 
 VariableExpression::VariableExpression(std::string name)
     : name_(std::move(name)) {}
 
-int VariableExpression::evaluate(const VarState& state) const {
-  return state.getValue(name_);
+int VariableExpression::evaluate(const VarState* state) const {
+  return state->getValue(name_);
 }
 
 CompoundExpression::CompoundExpression(Expression* left, char op,
@@ -23,7 +23,7 @@ CompoundExpression::~CompoundExpression() {
   delete right_;
 }
 
-int CompoundExpression::evaluate(const VarState& state) const {
+int CompoundExpression::evaluate(const VarState* state) const {
   int lhs = left_->evaluate(state);
   int rhs = right_->evaluate(state);
 

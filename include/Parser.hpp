@@ -4,6 +4,7 @@
 #include <optional>
 
 #include "Token.hpp"
+#include "VarState.hpp"
 
 class Statement;
 class Expression;
@@ -26,6 +27,9 @@ class ParsedLine {
 
 class Parser {
  public:
+  explicit Parser(VarState* vars) { vars_ = std::move(vars); };
+
+
   ParsedLine parseLine(TokenStream& tokens,
                        const std::string& originLine) const;
 
@@ -50,4 +54,5 @@ class Parser {
   int parseLiteral(const Token* token) const;
 
   mutable int leftParentCount{0};
+  VarState* vars_;
 };

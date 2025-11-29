@@ -10,8 +10,8 @@
 
 int main() {
   Lexer lexer;
-  Parser parser;
   Program program;
+  Parser parser(program.get_vars());
 
   std::string line;
   while (std::getline(std::cin, line)) {
