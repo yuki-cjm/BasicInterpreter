@@ -101,7 +101,7 @@ Statement* Parser::parseLet(TokenStream& tokens,
   auto expr = parseExpression(tokens);
 
   // TODO: create a corresponding stmt and return it.
-    LetStatement *stmt = new LetStatement(originline, varName, expr->evaluate);
+    LetStatement *stmt = new LetStatement(originLine, varName, expr->evaluate);
     return stmt;
 }
 
@@ -109,7 +109,7 @@ Statement* Parser::parsePrint(TokenStream& tokens,
                               const std::string& originLine) const {
   auto expr = parseExpression(tokens);
   // TODO: create a corresponding stmt and return it.
-    PrintStatement *stmt = new PrintStatement(oringinLine, expr->evaluate);
+    PrintStatement *stmt = new PrintStatement(originLine, expr->evaluate);
     return stmt;
 }
 
@@ -126,7 +126,7 @@ Statement* Parser::parseInput(TokenStream& tokens,
 
   std::string varName = varToken->text;
   // TODO: create a corresponding stmt and return it.
-    InputStatement *stmt = new InputStatement(orginLine, varName);
+    InputStatement *stmt = new InputStatement(originLine, varName);
     return stmt;
 }
 
@@ -143,8 +143,8 @@ Statement* Parser::parseGoto(TokenStream& tokens,
 
   int targetLine = parseLiteral(lineToken);
   // TODO: create a corresponding stmt and return it.
-    GotoStatement stmt = new GotoStatement(originLine, targetLine);
-    return *stmt;
+    GotoStatement *stmt = new GotoStatement(originLine, targetLine);
+    return stmt;
 }
 
 Statement* Parser::parseIf(TokenStream& tokens,
