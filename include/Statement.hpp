@@ -25,7 +25,7 @@ class Statement {
 // LetStatement, etc.
 class RemStatement : public Statement {
   public:
-    explicit RemStatement(std::string source) : Statement(source) {};
+    explicit RemStatement(std::string source) : Statement(std::move(source)) {};
     ~RemStatement() { delete this; };
 
     void execute(VarState &state, Program& program) const override;
@@ -33,7 +33,7 @@ class RemStatement : public Statement {
 
 class LetStatement : public Statement {
   public:
-    explicit LetStatement(std::string source, std::string name, int num): Statement(source), variable_name(name), value(num){};
+    explicit LetStatement(std::string source, std::string name, int num): Statement(std::move(source)), variable_name(std::move(name)), value(num){};
     ~LetStatement() { delete this; };
 
     void execute(VarState &state, Program& program) const override;
@@ -44,7 +44,7 @@ class LetStatement : public Statement {
 
 class PrintStatement : public Statement {
   public:
-    explicit PrintStatement(std::string source, int value) : Statement(source), result(value) {};
+    explicit PrintStatement(std::string source, int value) : Statement(std::move(source)), result(value) {};
     ~PrintStatement() { delete this; };
 
     void execute(VarState &state, Program& program) const override;
@@ -54,7 +54,7 @@ class PrintStatement : public Statement {
 
 class InputStatement : public Statement {
   public:
-    explicit InputStatement(std::string source, std::string name) : Statement(source), variable_name(name){};
+    explicit InputStatement(std::string source, std::string name) : Statement(std::move(source)), variable_name(std::move(name)){};
     ~InputStatement() { delete this; };
 
     void execute(VarState &state, Program& program) const override;
@@ -64,7 +64,7 @@ class InputStatement : public Statement {
 
 class EndStatement : public Statement {
   public:
-    explicit EndStatement(std::string source) : Statement(source) {};
+    explicit EndStatement(std::string source) : Statement(std::move(source)) {};
     ~EndStatement() { delete this; };
 
     void execute(VarState &state, Program& program) const override;
@@ -72,7 +72,7 @@ class EndStatement : public Statement {
 
 class GotoStatement : public Statement {
   public:
-    explicit GotoStatement(std::string source, int line) : Statement(source), Linenumber(line) {};
+    explicit GotoStatement(std::string source, int line) : Statement(std::move(source)), Linenumber(line) {};
     ~GotoStatement() { delete this; };
 
     void execute(VarState &state, Program& program) const override;
@@ -82,7 +82,7 @@ class GotoStatement : public Statement {
 
 class IfStatement : public Statement {
   public:
-    explicit IfStatement(std::string source, int left, char op, int right, int num) : Statement(source), leftvalue(left), op(op), rightvalue(right), Linenumber(num) {};
+    explicit IfStatement(std::string source, int left, char op, int right, int num) : Statement(std::move(source)), leftvalue(left), op(op), rightvalue(right), Linenumber(num) {};
     ~IfStatement() { delete this; };
 
     void execute(VarState &state, Program& program) const override;
@@ -94,7 +94,7 @@ class IfStatement : public Statement {
 
 class RunStatement : public Statement {
   public:
-    explicit RunStatement(std::string source) : Statement(source) {};
+    explicit RunStatement(std::string source) : Statement(std::move(source)) {};
     ~RunStatement() { delete this; };
 
     void execute(VarState &state, Program& program) const override;
@@ -102,7 +102,7 @@ class RunStatement : public Statement {
 
 class ListStatement : public Statement {
   public:
-    explicit ListStatement(std::string source) : Statement(source) {};
+    explicit ListStatement(std::string source) : Statement(std::move(source)) {};
     ~ListStatement() { delete this; };
 
     void execute(VarState &state, Program& program) const override;
@@ -110,7 +110,7 @@ class ListStatement : public Statement {
 
 class ClearStatement : public Statement {
   public:
-    explicit ClearStatement(std::string source) : Statement(source) {};
+    explicit ClearStatement(std::string source) : Statement(std::move(source)) {};
     ~ClearStatement() { delete this; };
 
     void execute(VarState &state, Program& program) const override;
@@ -118,7 +118,7 @@ class ClearStatement : public Statement {
 
 class QuitStatement : public Statement {
   public:
-    explicit QuitStatement(std::string source) : Statement(source) {};
+    explicit QuitStatement(std::string source) : Statement(std::move(source)) {};
     ~QuitStatement() { delete this; };
 
     void execute(VarState &state, Program& program) const override;
@@ -126,7 +126,7 @@ class QuitStatement : public Statement {
 
 class HelpStatement : public Statement {
   public:
-    explicit HelpStatement(std::string source) : Statement(source) {};
+    explicit HelpStatement(std::string source) : Statement(std::move(source)) {};
     ~HelpStatement() { delete this; };
 
     void execute(VarState &state, Program& program) const override;
