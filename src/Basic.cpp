@@ -30,16 +30,18 @@ int main() {
             case TokenType::QUIT : exit(0);break;
             case TokenType::HELP : 
             default:
-            ParsedLine parsedline = parser.parseLine(tokenstream, line);
-            if(parsedline.getLine().has_value())
-                program.addStmt(parsedline.getLine().value(), parsedline.getStatement());
-            else
-                program.execute(parsedline.getStatement());
+                ParsedLine parsedline = parser.parseLine(tokenstream, line);
+                if(parsedline.getLine().has_value())
+                    program.addStmt(parsedline.getLine().value(), parsedline.getStatement());
+                else
+                    program.execute(parsedline.getStatement());
+                std::cout << "!@#!@#!@\n";
         }
-        
+        std::cout << "why?\n";
     } catch (const BasicError& e) {
       std::cout << e.message() << "\n";
     }
+    std::cout << "why\n";
   }
   return 0;
 }

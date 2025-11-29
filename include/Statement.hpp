@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <memory>
 #include <string>
 
@@ -26,7 +27,7 @@ class Statement {
 class RemStatement : public Statement {
   public:
     explicit RemStatement(std::string source) : Statement(std::move(source)) {};
-    ~RemStatement() { delete this; };
+    ~RemStatement() = default;
 
     void execute(VarState &state, Program& program) const override;
 };
@@ -34,7 +35,7 @@ class RemStatement : public Statement {
 class LetStatement : public Statement {
   public:
     explicit LetStatement(std::string source, std::string name, int num): Statement(std::move(source)), variable_name(std::move(name)), value(num){};
-    ~LetStatement() { delete this; };
+    ~LetStatement() = default;
 
     void execute(VarState &state, Program& program) const override;
   private:
@@ -45,7 +46,7 @@ class LetStatement : public Statement {
 class PrintStatement : public Statement {
   public:
     explicit PrintStatement(std::string source, int value) : Statement(std::move(source)), result(value) {};
-    ~PrintStatement() { delete this; };
+    ~PrintStatement() = default;
 
     void execute(VarState &state, Program& program) const override;
   private:
@@ -55,7 +56,7 @@ class PrintStatement : public Statement {
 class InputStatement : public Statement {
   public:
     explicit InputStatement(std::string source, std::string name) : Statement(std::move(source)), variable_name(std::move(name)){};
-    ~InputStatement() { delete this; };
+    ~InputStatement() = default;
 
     void execute(VarState &state, Program& program) const override;
   private:
@@ -65,7 +66,7 @@ class InputStatement : public Statement {
 class EndStatement : public Statement {
   public:
     explicit EndStatement(std::string source) : Statement(std::move(source)) {};
-    ~EndStatement() { delete this; };
+    ~EndStatement() = default;
 
     void execute(VarState &state, Program& program) const override;
 };
@@ -73,7 +74,7 @@ class EndStatement : public Statement {
 class GotoStatement : public Statement {
   public:
     explicit GotoStatement(std::string source, int line) : Statement(std::move(source)), Linenumber(line) {};
-    ~GotoStatement() { delete this; };
+    ~GotoStatement() = default;
 
     void execute(VarState &state, Program& program) const override;
   private:
@@ -83,7 +84,7 @@ class GotoStatement : public Statement {
 class IfStatement : public Statement {
   public:
     explicit IfStatement(std::string source, int left, char op, int right, int num) : Statement(std::move(source)), leftvalue(left), op(op), rightvalue(right), Linenumber(num) {};
-    ~IfStatement() { delete this; };
+    ~IfStatement() = default;
 
     void execute(VarState &state, Program& program) const override;
   private:
