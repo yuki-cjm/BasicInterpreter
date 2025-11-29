@@ -19,5 +19,6 @@ class Recorder {
   int nextLine(int line) const noexcept;
 
  private:
-  // TODO.
+  // TODO
+    std::map<int, Statement*> recorder;
 };
