@@ -12,7 +12,14 @@ Recorder::~Recorder(){
 }
 
 void Recorder::add(int line, Statement* stmt){
-    recorder.insert({line, stmt});
+    if(hasLine(line))
+        if(stmt == nullptr)
+            recorder.erase(line);
+        else
+            recorder[line] = stmt;
+    else 
+        if(stmt != nullptr)
+            recorder.insert({line, stmt});
 }
 
 void Recorder::remove(int line){
