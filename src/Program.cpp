@@ -6,6 +6,7 @@
 #include "Statement.hpp"
 #include "Recorder.hpp"
 #include "VarState.hpp"
+#include "utils/Error.hpp"
 
 Program::Program() = default;
 
@@ -29,7 +30,10 @@ void Program::run(){
         if(Counter_changed)
         {
             if(!recorder_.hasLine(programCounter_))
-                programCounter_ = recorder_.nextLine(programCounter_);
+            {
+                throw BasicError("LINE NUMBER ERROR");
+                break;
+            }
         }
         else
             programCounter_ = recorder_.nextLine(programCounter_);
