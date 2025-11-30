@@ -34,13 +34,13 @@ class RemStatement : public Statement {
 
 class LetStatement : public Statement {
   public:
-    explicit LetStatement(std::string source, std::string name, int num): Statement(std::move(source)), variable_name(std::move(name)), value(num){};
+    explicit LetStatement(std::string source, std::string name, std::shared_ptr<Expression> ptr): Statement(std::move(source)), variable_name(std::move(name)), exp(ptr){};
     ~LetStatement() = default;
 
     void execute(VarState &state, Program& program) const override;
   private:
     std::string variable_name;
-    int value;
+    std::shared_ptr<Expression> exp;
 };
 
 class PrintStatement : public Statement {
@@ -83,12 +83,12 @@ class GotoStatement : public Statement {
 
 class IfStatement : public Statement {
   public:
-    explicit IfStatement(std::string source, int left, char op, int right, int num) : Statement(std::move(source)), leftvalue(left), op(op), rightvalue(right), Linenumber(num) {};
+    explicit IfStatement(std::string source, std::shared_ptr<Expression> leftptr, char op, std::shared_ptr<Expression> rightptr, int num) : Statement(std::move(source)), leftexp(leftptr), op(op), rightexp(rightptr), Linenumber(num) {};
     ~IfStatement() = default;
 
     void execute(VarState &state, Program& program) const override;
   private:
-    int leftvalue, rightvalue;
+    std::shared_ptr<Expression> leftexp, rightexp;
     char op;
     int Linenumber;
 };

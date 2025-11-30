@@ -18,7 +18,7 @@ const std::string& Statement::text() const noexcept { return source_; }
 void RemStatement::execute(VarState &state, Program& program) const{}
 
 void LetStatement::execute(VarState &state, Program& program) const{
-    state.setValue(variable_name, value);
+    state.setValue(variable_name, exp->evaluate(program.get_vars()));
 }
 
 void PrintStatement::execute(VarState &state, Program& program) const{
@@ -53,6 +53,8 @@ void GotoStatement::execute(VarState &state, Program& program) const{
 }
 
 void IfStatement::execute(VarState &state, Program& program) const{
+    int leftvalue = leftexp->evaluate(program.get_vars());
+    int rightvalue = rightexp->evaluate(program.get_vars());
     switch(op)
     {
         case '<': if(leftvalue < rightvalue) program.changePC(Linenumber); break;
