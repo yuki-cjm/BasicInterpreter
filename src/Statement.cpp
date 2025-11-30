@@ -26,9 +26,22 @@ void PrintStatement::execute(VarState &state, Program& program) const{
 }
 
 void InputStatement::execute(VarState &state, Program& program) const{
-    int value;
-    std::cin >> value;
-    state.setValue(variable_name, value);
+    std::string s;
+    while(1)
+    {
+        std::cout << " ? ";
+        std::getline(std::cin, s);
+        std::istringstream iss(s);
+        int value;
+        iss >> value;
+        if(iss.eof() && !iss.fail())
+        {
+            state.setValue(variable_name, value);
+            break;
+        }
+        else
+            std::cout << "INVALID NUMBER\n";
+    }
 }
 
 void EndStatement::execute(VarState &state, Program& program) const{

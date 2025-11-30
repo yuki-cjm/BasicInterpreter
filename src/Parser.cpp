@@ -97,7 +97,7 @@ Statement* Parser::parseLet(TokenStream& tokens,
     throw BasicError("SYNTAX ERROR");
   }
 
-  auto expr = parseExpression(tokens);
+  std::shared_ptr<Expression> expr (parseExpression(tokens));
 
   // TODO: create a corresponding stmt and return it.
     LetStatement *stmt = new LetStatement(originLine, varName, expr->evaluate(vars_));
