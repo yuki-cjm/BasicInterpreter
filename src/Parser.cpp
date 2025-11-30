@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <memory>
 
 #include "Expression.hpp"
 #include "Statement.hpp"
@@ -105,10 +106,9 @@ Statement* Parser::parseLet(TokenStream& tokens,
 
 Statement* Parser::parsePrint(TokenStream& tokens,
                               const std::string& originLine) const {
-  auto expr = parseExpression(tokens);
+  std::shared_ptr<Expression> expr(parseExpression(tokens));
   // TODO: create a corresponding stmt and return it.
     PrintStatement *stmt = new PrintStatement(originLine, expr->evaluate(vars_));
-    delete expr;
     return stmt;
 }
 
@@ -149,7 +149,7 @@ Statement* Parser::parseGoto(TokenStream& tokens,
 Statement* Parser::parseIf(TokenStream& tokens,
                            const std::string& originLine) const {
   // 解析左表达式
-  auto leftExpr = parseExpression(tokens);
+  std::shared_ptr<Expression>  leftExpr(parseExpression(tokens));
 
   if (tokens.empty()) {
     throw BasicError("SYNTAX ERROR");
@@ -173,7 +173,7 @@ Statement* Parser::parseIf(TokenStream& tokens,
   }
 
   // 解析右表达式
-  auto rightExpr = parseExpression(tokens);
+  std::shared_ptr<Expression> rightExpr (parseExpression(tokens));
 
   // 检查THEN关键字
   if (tokens.empty() || tokens.get()->type != TokenType::THEN) {
@@ -292,9 +292,7 @@ Expression* Parser::parseExpression(TokenStream& tokens, int precedence) const {
 
     // 解析右操作数，使用更高的优先级
     auto right = parseExpression(tokens, opPrecedence + 1);
-    auto tmp = left;
     left = new CompoundExpression(left, op, right);
-    delete tmp;
   }
 
   return left;
