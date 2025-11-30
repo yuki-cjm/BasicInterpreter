@@ -45,12 +45,12 @@ class LetStatement : public Statement {
 
 class PrintStatement : public Statement {
   public:
-    explicit PrintStatement(std::string source, int value) : Statement(std::move(source)), result(value) {};
+    explicit PrintStatement(std::string source, std::shared_ptr<Expression> ptr) : Statement(std::move(source)), exp(ptr) {};
     ~PrintStatement() = default;
 
     void execute(VarState &state, Program& program) const override;
   private:
-    int result;
+    std::shared_ptr<Expression> exp;
 };
 
 class InputStatement : public Statement {

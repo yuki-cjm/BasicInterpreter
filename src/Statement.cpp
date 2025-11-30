@@ -22,7 +22,7 @@ void LetStatement::execute(VarState &state, Program& program) const{
 }
 
 void PrintStatement::execute(VarState &state, Program& program) const{
-    std::cout << result << '\n';
+    std::cout << exp->evaluate(program.get_vars()) << '\n';
 }
 
 void InputStatement::execute(VarState &state, Program& program) const{

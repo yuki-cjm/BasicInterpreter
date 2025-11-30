@@ -108,7 +108,7 @@ Statement* Parser::parsePrint(TokenStream& tokens,
                               const std::string& originLine) const {
   std::shared_ptr<Expression> expr(parseExpression(tokens));
   // TODO: create a corresponding stmt and return it.
-    PrintStatement *stmt = new PrintStatement(originLine, expr->evaluate(vars_));
+    PrintStatement *stmt = new PrintStatement(originLine, expr);
     return stmt;
 }
 
