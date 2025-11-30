@@ -12,7 +12,7 @@
 
 ParsedLine::ParsedLine() { statement_ = nullptr; }
 
-ParsedLine::~ParsedLine() { delete statement_; }
+ParsedLine::~ParsedLine() = default;
 
 void ParsedLine::setLine(int line) { line_number_.emplace(line); }
 

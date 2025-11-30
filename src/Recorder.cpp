@@ -6,6 +6,10 @@
 #include <map>
 
 #include "Statement.hpp"
+Recorder::~Recorder(){
+    for(auto it = recorder.begin(); it != recorder.end(); it++)
+        delete it->second;
+}
 
 void Recorder::add(int line, Statement* stmt){
     recorder.insert({line, stmt});
@@ -45,3 +49,4 @@ int Recorder::nextLine(int line) const noexcept{
         return it->first;
     return -1;
 }
+
