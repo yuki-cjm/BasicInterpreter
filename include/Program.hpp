@@ -32,6 +32,7 @@ class Program {
   VarState vars_;
   int programCounter_;
   bool programEnd_;
+  bool Counter_changed;
 
   void resetAfterRun() noexcept;
 };

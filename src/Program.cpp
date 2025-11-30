@@ -22,12 +22,15 @@ void Program::run(){
     programEnd_ = false;
     programCounter_ = recorder_.nextLine(programCounter_);
     while(programCounter_ != -1){
-        int tmp = programCounter_;
+        Counter_changed = false;
         execute(recorder_.get(programCounter_));
         if(programEnd_)
             break;
-        if(tmp == programCounter_)
-        programCounter_ = recorder_.nextLine(programCounter_);
+        if(Counter_changed)
+            if(!recorder_.hasLine(programCounter_))
+                programCounter_ = recorder_.nextLine(programCounter_);
+        else
+            programCounter_ = recorder_.nextLine(programCounter_);
     }
 }
 
@@ -50,6 +53,7 @@ int Program::getPC() const noexcept{
 
 void Program::changePC(int line){
     programCounter_ = line;
+    Counter_changed = true;
 }
 
 void Program::programEnd(){
