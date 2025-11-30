@@ -22,9 +22,11 @@ void Program::run(){
     programEnd_ = false;
     programCounter_ = recorder_.nextLine(programCounter_);
     while(programCounter_ != -1){
+        int tmp = programCounter_;
         execute(recorder_.get(programCounter_));
         if(programEnd_)
             break;
+        if(tmp == programCounter_)
         programCounter_ = recorder_.nextLine(programCounter_);
     }
 }
