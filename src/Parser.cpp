@@ -108,6 +108,7 @@ Statement* Parser::parsePrint(TokenStream& tokens,
   auto expr = parseExpression(tokens);
   // TODO: create a corresponding stmt and return it.
     PrintStatement *stmt = new PrintStatement(originLine, expr->evaluate(vars_));
+    delete expr;
     return stmt;
 }
 
@@ -291,7 +292,9 @@ Expression* Parser::parseExpression(TokenStream& tokens, int precedence) const {
 
     // 解析右操作数，使用更高的优先级
     auto right = parseExpression(tokens, opPrecedence + 1);
+    auto tmp = left;
     left = new CompoundExpression(left, op, right);
+    delete tmp;
   }
 
   return left;

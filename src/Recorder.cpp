@@ -13,10 +13,13 @@ Recorder::~Recorder(){
 
 void Recorder::add(int line, Statement* stmt){
     if(hasLine(line))
+    {
+        delete recorder[line];
         if(stmt == nullptr)
             recorder.erase(line);
         else
             recorder[line] = stmt;
+    }
     else 
         if(stmt != nullptr)
             recorder.insert({line, stmt});
@@ -42,6 +45,8 @@ bool Recorder::hasLine(int line) const noexcept{
 }
 
 void Recorder::clear() noexcept{
+    for(auto it = recorder.begin(); it != recorder.end(); it++)
+        delete it->second;
     recorder.clear();
 }
 

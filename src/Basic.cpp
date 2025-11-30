@@ -34,7 +34,10 @@ int main() {
                 if(parsedline.getLine().has_value())
                     program.addStmt(parsedline.getLine().value(), parsedline.getStatement());
                 else
+                {
                     program.execute(parsedline.getStatement());
+                    delete parsedline.getStatement();
+                }
         }
     } catch (const BasicError& e) {
       std::cout << e.message() << "\n";
