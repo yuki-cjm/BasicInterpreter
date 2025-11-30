@@ -27,8 +27,10 @@ void Program::run(){
         if(programEnd_)
             break;
         if(Counter_changed)
+        {
             if(!recorder_.hasLine(programCounter_))
                 programCounter_ = recorder_.nextLine(programCounter_);
+        }
         else
             programCounter_ = recorder_.nextLine(programCounter_);
     }
