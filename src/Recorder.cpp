@@ -6,15 +6,11 @@
 #include <map>
 
 #include "Statement.hpp"
-Recorder::~Recorder(){
-    for(auto it = recorder.begin(); it != recorder.end(); it++)
-        delete it->second;
-}
+Recorder::~Recorder() = default;
 
-void Recorder::add(int line, Statement* stmt){
+void Recorder::add(int line, std::shared_ptr<Statement> stmt){
     if(hasLine(line))
     {
-        delete recorder[line];
         if(stmt == nullptr)
             recorder.erase(line);
         else
@@ -30,7 +26,7 @@ void Recorder::remove(int line){
         recorder.erase(line);
 }
 
-Statement* Recorder::get(int line) noexcept{
+std::shared_ptr<Statement> Recorder::get(int line) noexcept{
     if(hasLine(line))
         return recorder[line];
     else
@@ -45,8 +41,6 @@ bool Recorder::hasLine(int line) const noexcept{
 }
 
 void Recorder::clear() noexcept{
-    for(auto it = recorder.begin(); it != recorder.end(); it++)
-        delete it->second;
     recorder.clear();
 }
 

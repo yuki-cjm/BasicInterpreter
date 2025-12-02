@@ -12,7 +12,7 @@ class Program {
  public:
   Program();
 
-  void addStmt(int line, Statement* stmt);
+  void addStmt(int line, std::shared_ptr<Statement> stmt);
   void removeStmt(int line);
 
   void run();
@@ -20,7 +20,7 @@ class Program {
   void clear();
   void help();
 
-  void execute(Statement* stmt);
+  void execute(std::shared_ptr<Statement> stmt);
 
   int getPC() const noexcept;
   void changePC(int line);
@@ -28,7 +28,7 @@ class Program {
   void indent();
   void dedent();
 
-  VarState* get_vars();
+  std::shared_ptr<VarState> get_vars();
 
  private:
   Recorder recorder_;

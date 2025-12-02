@@ -2,6 +2,7 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 
 enum class TokenType {
   // Keywords
@@ -50,8 +51,8 @@ class TokenStream {
   TokenStream() = default;
   explicit TokenStream(std::vector<Token>&& tokens);
 
-  const Token* peek() const;
-  const Token* get();
+  const std::shared_ptr<Token> peek() const;
+  const std::shared_ptr<Token> get();
   bool empty() const;
   void reset();
 

@@ -21,7 +21,7 @@ int main() {
     try {
       // TODO: The main function.
         TokenStream tokenstream = lexer.tokenize(line);
-        const Token *token = tokenstream.peek();
+        const std::shared_ptr<Token> token = tokenstream.peek();
         switch(token->type)
         {
             case TokenType::RUN : program.run();break;
@@ -34,10 +34,7 @@ int main() {
                 if(parsedline.getLine().has_value())
                     program.addStmt(parsedline.getLine().value(), parsedline.getStatement());
                 else
-                {
                     program.execute(parsedline.getStatement());
-                    delete parsedline.getStatement();
-                }
         }
     } catch (const BasicError& e) {
       std::cout << e.message() << "\n";

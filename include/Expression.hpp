@@ -9,14 +9,14 @@ class VarState;
 class Expression {
  public:
   virtual ~Expression() = default;
-  virtual int evaluate(const VarState* state) const = 0;
+  virtual int evaluate(const std::shared_ptr<VarState> state) const = 0;
 };
 
 class ConstExpression : public Expression {
  public:
   explicit ConstExpression(int value);
   ~ConstExpression() = default;
-  int evaluate(const VarState* state) const override;
+  int evaluate(const std::shared_ptr<VarState> state) const override;
 
  private:
   int value_;
@@ -26,7 +26,7 @@ class VariableExpression : public Expression {
  public:
   explicit VariableExpression(std::string name);
   ~VariableExpression() = default;
-  int evaluate(const VarState* state) const override;
+  int evaluate(const std::shared_ptr<VarState> state) const override;
 
  private:
   std::string name_;
@@ -34,12 +34,12 @@ class VariableExpression : public Expression {
 
 class CompoundExpression : public Expression {
  public:
-  CompoundExpression(Expression* left, char op, Expression* right);
+  CompoundExpression(std::shared_ptr<Expression> left, char op, std::shared_ptr<Expression> right);
   ~CompoundExpression();
-  int evaluate(const VarState* state) const override;
+  int evaluate(const std::shared_ptr<VarState> state) const override;
 
  private:
-  Expression* left_;
-  Expression* right_;
+  std::shared_ptr<Expression> left_;
+  std::shared_ptr<Expression> right_;
   char op_;
 };

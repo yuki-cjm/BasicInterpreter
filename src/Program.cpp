@@ -11,7 +11,7 @@
 
 Program::Program() = default;
 
-void Program::addStmt(int line, Statement* stmt){
+void Program::addStmt(int line, std::shared_ptr<Statement> stmt){
     recorder_.add(line, stmt);
 }
 
@@ -50,7 +50,7 @@ void Program::clear(){
     vars_.clear();
 }
 
-void Program::execute(Statement* stmt){
+void Program::execute(std::shared_ptr<Statement> stmt){
     stmt->execute(vars_, *this);
 }
 
@@ -75,8 +75,9 @@ void Program::dedent(){
     vars_.dedent();
 }
 
-VarState* Program::get_vars(){
-    return &vars_;
+std::shared_ptr<VarState> Program::get_vars(){
+    std::shared_ptr<VarState> temp = std::make_shared<VarState>(vars_);
+    return temp;
 }
 
 void Program::resetAfterRun() noexcept{
