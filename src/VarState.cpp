@@ -3,17 +3,47 @@
 #include <algorithm>
 
 #include "utils/Error.hpp"
+VarState::VarState() {
+  values_.push_back({});
+  dent = 0;
+}
+
+VarState::~VarState() = default;
 
 void VarState::setValue(const std::string& name, int value) {
-  values_[name] = value;
+  values_[dent][name] = value;
 }
 
 int VarState::getValue(const std::string& name) const {
-  auto it = values_.find(name);
-  if (it == values_.end()) {
-    throw BasicError("VARIABLE NOT DEFINED");
+  for(auto dent_now = values_.rbegin(); dent_now != values_.rend(); dent_now++)
+  {
+    auto it = dent_now->find(name);
+    if(it != dent_now->end())
+        return it->second;
   }
-  return it->second;
+  throw BasicError("VARIABLE NOT DEFINED");
 }
 
-void VarState::clear() { values_.clear(); }
+void VarState::clear() {
+    values_.clear();
+    dent = 0;
+}
+
+int VarState::getDent() {
+    return dent;
+}
+
+void VarState::indent() {
+    values_.push_back({});
+    dent++;
+}
+
+void VarState::dedent() {
+    if(dent == 0)
+        throw BasicError("SCOPE UNDERFLOW");
+    else
+    {
+        values_.pop_back();
+        dent--;
+    }
+}

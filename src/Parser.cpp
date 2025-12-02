@@ -75,6 +75,10 @@ Statement* Parser::parseStatement(TokenStream& tokens,
       return parseRem(tokens, originLine);
     case TokenType::END:
       return parseEnd(tokens, originLine);
+    case TokenType::INDENT:
+      return parseIndent(tokens, originLine);
+    case TokenType::DEDENT:
+      return parseDedent(tokens, originLine);
     default:
       throw BasicError("SYNTAX ERROR");
   }
@@ -97,7 +101,7 @@ Statement* Parser::parseLet(TokenStream& tokens,
     throw BasicError("SYNTAX ERROR");
   }
 
-  std::shared_ptr<Expression> expr (parseExpression(tokens));
+  std::shared_ptr<Expression> expr(parseExpression(tokens));
 
   // TODO: create a corresponding stmt and return it.
     LetStatement *stmt = new LetStatement(originLine, varName, expr);
@@ -212,6 +216,18 @@ Statement* Parser::parseEnd(TokenStream& tokens,
                             const std::string& originLine) const {
   // TODO: create a corresponding stmt and return it.
     EndStatement *stmt = new EndStatement(originLine);
+    return stmt;
+}
+
+Statement* Parser::parseIndent(TokenStream& tokens,
+                            const std::string& originLine) const {
+    IndentStatement *stmt = new IndentStatement(originLine);
+    return stmt;
+}
+
+Statement* Parser::parseDedent(TokenStream& tokens,
+                            const std::string& originLine) const {
+    DedentStatement *stmt = new DedentStatement(originLine);
     return stmt;
 }
 

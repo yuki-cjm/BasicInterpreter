@@ -61,4 +61,3 @@ int Recorder::nextLine(int line) const noexcept{
         return it->first;
     return -1;
 }
-

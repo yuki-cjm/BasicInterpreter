@@ -92,3 +92,19 @@ class IfStatement : public Statement {
     char op;
     int Linenumber;
 };
+
+class IndentStatement : public Statement {
+  public:
+    explicit IndentStatement(std::string source) : Statement(std::move(source)) {};
+    ~IndentStatement() = default;
+
+    void execute(VarState &state, Program& program) const override;
+};
+
+class DedentStatement : public Statement {
+  public:
+    explicit DedentStatement(std::string source) : Statement(std::move(source)) {};
+    ~DedentStatement() = default;
+
+    void execute(VarState &state, Program& program) const override;
+};

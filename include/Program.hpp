@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <vector>
 
 #include "Recorder.hpp"
 #include "VarState.hpp"
@@ -24,6 +25,8 @@ class Program {
   int getPC() const noexcept;
   void changePC(int line);
   void programEnd();
+  void indent();
+  void dedent();
 
   VarState* get_vars();
 

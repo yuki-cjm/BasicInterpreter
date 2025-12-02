@@ -1,0 +1,185 @@
+[33mcommit 4a8fe561d10c9f7486e0bd4d42a43ee4114c8b3d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31mBasicInterpreter/main[m[33m)[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 14:38:28 2025 +0800
+
+    last version
+
+[33mcommit ca7b500b13be66e9a40bb61a599f5cc792451ee5[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 14:29:09 2025 +0800
+
+    add:judgement of LINE NUMBER ERROR
+
+[33mcommit 5bc3949b284f80f46ac5db636d20cb13047154f6[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 14:24:00 2025 +0800
+
+    debug:program.run()
+
+[33mcommit 8c8009ca1a8b33709e740a09dd1a9663532aeed2[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 14:15:41 2025 +0800
+
+    debug:program.run()
+
+[33mcommit 42dcd676149ec2867489c57f986168f8291ca150[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 14:05:20 2025 +0800
+
+    debug: Change the statement of the current line number so that some statements are ignored.
+
+[33mcommit 6f3bb449e463660b1d0947a9403cc3c70a69e6a1[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 13:58:29 2025 +0800
+
+    Delay the correctness judgment of expressions in statements with line numbers.
+
+[33mcommit f964473a4f03e951ca1cd7c686b85e6ad4e4dcde[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 13:14:17 2025 +0800
+
+    Add the function to judge whether the input is an int.
+
+[33mcommit 508159b1d83d1a3f0a1aeba2d2bbfa195c198248[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 12:53:22 2025 +0800
+
+    Introduce smart pointers to manage memory.
+
+[33mcommit f1122ba3ad3fba27977dd48f7eda61e6f7c5d3f7[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 12:11:42 2025 +0800
+
+    Revise the space management related to expression pointers.
+
+[33mcommit 2e17f5cd38e191348d9903090d04647bdabbe7b2[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 11:52:26 2025 +0800
+
+    Correct the wrong way of adding the recorder.
+
+[33mcommit 9dc013dc188b4ca8a9c2423085fd3e9bd6177903[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 11:24:26 2025 +0800
+
+    Correct the erroneous space management
+
+[33mcommit 1a4b8be73ac601b6b56dc0280f802a4b9ef5bb68[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 03:53:27 2025 +0800
+
+    reconstruct the erroneous of releasing space
+
+[33mcommit 86fdf15e624c9da75e8c653aba009bdabab312d6[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 03:33:25 2025 +0800
+
+    Refactor the handling of statements like QUIT and CLEAR that do not include line numbers.
+
+[33mcommit a7df03fe39d8b247b2669a58717d1adbf63e5bb5[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 02:56:07 2025 +0800
+
+    debug:Recorder.hpp
+
+[33mcommit c676c9a0c1d93cccba2a8c972096145d0ab6b5c7[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 02:54:04 2025 +0800
+
+    debug:Statement.cpp
+
+[33mcommit 8523182dc93770af299a904fe58e2225ac214646[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 02:36:32 2025 +0800
+
+    debbug:Recorder
+
+[33mcommit 9f424bf5d0227120e6c35edebf4b53ec6779bf95[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 02:20:59 2025 +0800
+
+    refactor:Enable the functions in the Expression to be used normally
+
+[33mcommit ca98ed26dfd6877fa459b4585ea53b715bc50df6[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 02:18:42 2025 +0800
+
+    update gitignore
+
+[33mcommit f6f249cfbc00c6030ec2ec9d0c0e7304e325cd3d[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 01:57:28 2025 +0800
+
+    fix some silly mistakes of Parser.cpp
+
+[33mcommit 5a505bf0fece503f479a217f255833a6690e83d8[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 01:31:21 2025 +0800
+
+    optimize: Statement.hpp
+
+[33mcommit c0517bd7db364e959a68ecc2fb10e9a33612b7e8[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 01:19:27 2025 +0800
+
+    debug Basic.cpp
+
+[33mcommit 25cb08d85bb8863baa4977593c140a53632a1ca8[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 00:56:24 2025 +0800
+
+    feat: Complete Basic.cpp
+
+[33mcommit 36892c9d183245a7b4ebb5c47abe3326632a00c8[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 00:28:33 2025 +0800
+
+    feat: Complete Statement.hpp
+
+[33mcommit 8e9ca3a707db9a3171b919fa7e00b60b69ea3c2d[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 00:27:33 2025 +0800
+
+    feat: Complete Statement.cpp
+
+[33mcommit a754870c1ab631e4f02ad21967adbfe61f978e26[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sun Nov 30 00:04:35 2025 +0800
+
+    feat: Complete Parser.cpp
+
+[33mcommit 9530f5e79ef12eff9cacb2f70760f93c23519156[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sat Nov 29 17:22:12 2025 +0800
+
+    fix: Program.cpp
+
+[33mcommit 59392585ff0af7ab8a279ad43a35ed77039a9956[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sat Nov 29 17:21:13 2025 +0800
+
+    fix: Program.cpp
+
+[33mcommit 8c4a2db19cd782c98e34a328cf24a4d88384c764[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sat Nov 29 16:59:18 2025 +0800
+
+    feat: Complete Program.cpp
+
+[33mcommit bf333d4f3fb1a62d65a53e6f05a1aa69aa3e80a2[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Sat Nov 29 16:22:06 2025 +0800
+
+    feat: Complete Record.hpp and Record.cpp
+
+[33mcommit f2ad6d61ce2abfc0eb963730f696a72a38c24f5b[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Wed Nov 26 15:56:01 2025 +0800
+
+    Remove binaries and update .gitignore
+
+[33mcommit c3bf84031834b914d182c9957200bc1a5d4d552c[m
+Author: yuki_cjm <yuki_cjm@sjtu.edu.cn>
+Date:   Wed Nov 26 15:42:50 2025 +0800
+
+    Initial State

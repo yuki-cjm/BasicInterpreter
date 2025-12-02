@@ -2,6 +2,7 @@
 #include "Program.hpp"
 
 #include <iostream>
+#include <vector>
 
 #include "Statement.hpp"
 #include "Recorder.hpp"
@@ -64,6 +65,14 @@ void Program::changePC(int line){
 
 void Program::programEnd(){
     programEnd_ = true;
+}
+
+void Program::indent(){
+    vars_.indent();
+}
+
+void Program::dedent(){
+    vars_.dedent();
 }
 
 VarState* Program::get_vars(){

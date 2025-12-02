@@ -63,3 +63,10 @@ void IfStatement::execute(VarState &state, Program& program) const{
     }
 }
 
+void IndentStatement::execute(VarState &state, Program& program) const{
+    program.indent();
+}
+
+void DedentStatement::execute(VarState &state, Program& program) const{
+    program.dedent();
+}
